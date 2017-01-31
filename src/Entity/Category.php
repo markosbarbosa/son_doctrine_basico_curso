@@ -18,7 +18,7 @@ class Category {
 	/**
 	 * @Column(type = "string", length = 100)
 	 */
-	private $nome;
+	private $name;
 	
 	/**
 	 * 
@@ -29,12 +29,12 @@ class Category {
 	}
 	
 
-	public function getNome() {
-		return $this->nome;
+	public function getName() {
+		return $this->name;
 	}
 	
-	public function setNome($nome) {
-		$this->id = $nome;
+	public function setName($name) {
+		$this->name = $name;
 		return $this;
 	}
 	
