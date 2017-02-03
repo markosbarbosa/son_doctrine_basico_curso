@@ -34,7 +34,7 @@ class Post {
 	}
 	
 
-	public function geTitle() {
+	public function getTitle() {
 		return $this->title;
 	}
 	
@@ -43,7 +43,7 @@ class Post {
 		return $this;
 	}
 	
-	public function geContent() {
+	public function getContent() {
 		return $this->content;
 	}
 	
