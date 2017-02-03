@@ -40,6 +40,11 @@ $map->get('categories.list', '/categories', function($requet, $response) use ($v
 });
 	
 
+$map->get('categories.create', '/categories/create', function($requet, $response) use ($view) {
+	return $view->render($response, 'categories/create.phtml');
+});
+	
+
 
 $matcher = $routerContainer->getMatcher();
 
