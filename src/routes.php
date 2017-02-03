@@ -24,6 +24,12 @@ $map->get('home', '/', function($requet, $response) use ($view) {
 });
 
 
+$map->get('categories.list', '/categories', function($requet, $response) use ($view) {
+	return $view->render($response, 'categories/list.phtml');
+});
+	
+
+
 $matcher = $routerContainer->getMatcher();
 
 
