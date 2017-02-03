@@ -4,6 +4,7 @@ use Zend\Diactoros\ServerRequestFactory;
 use Aura\Router\RouterContainer;
 use Zend\Diactoros\Response;
 use Slim\Views\PhpRenderer;
+use App\Entity\Category;
 
 $request = ServerRequestFactory::fromGlobals(
 	$_SERVER, $_GET, $_POST, $_COOKIE, $_FILES
@@ -15,6 +16,10 @@ $map = $routerContainer->getMap();
 
 $view = new PhpRenderer(__DIR__ . '/../templates/');
 
+
+$entityManager = getEntityManager();
+
+
 $map->get('home', '/', function($requet, $response) use ($view) {
 	
 	return $view->render($response, 'home.phtml', [
@@ -24,8 +29,14 @@ $map->get('home', '/', function($requet, $response) use ($view) {
 });
 
 
-$map->get('categories.list', '/categories', function($requet, $response) use ($view) {
-	return $view->render($response, 'categories/list.phtml');
+$map->get('categories.list', '/categories', function($requet, $response) use ($view, $entityManager) {
+	
+	$repository = $entityManager->getRepository(Category::class);
+	$categories = $repository->findAll();
+	
+	return $view->render($response, 'categories/list.phtml', [
+		'categories' => $categories
+	]);
 });
 	
 

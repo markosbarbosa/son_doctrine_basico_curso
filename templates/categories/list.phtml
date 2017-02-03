@@ -12,7 +12,12 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr></tr>
+					<?php foreach ($categories as $category): ?>
+					<tr>
+						<td><?php echo $category->getId(); ?></td>
+						<td><?php echo $category->getName(); ?></td>
+					</tr>
+					<?php endforeach; ?>
 				</tbody>
 			</table>
 		
