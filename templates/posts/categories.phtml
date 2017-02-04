@@ -11,7 +11,7 @@
                     
                         <?php foreach ($categories as $category): ?>
                             <option value="<?php echo $category->getId() ?>"
-                                <?php //echo $post->getCategories()->contains($category) ? 'selected="selected"' : "" ?>>
+                                <?php echo $post->getCategories()->contains($category) ? 'selected="selected"' : "" ?>>
                                 <?php echo $category->getName() ?>
                             </option>
                         <?php endforeach; ?>

@@ -117,25 +117,24 @@ $map->post('posts.set-categories', '/posts/{id}/set-categories', function(Server
 
 	$id = $request->getAttribute('id');
 
-	$repositoty = $entityManager->getRepository(Post::class);
-
-	$post = $repositoty->find($id);
-
-	
 	$data = $request->getParsedBody();
-
-	echo '<pre>';
-	var_dump($data);
-	exit;
 	
-	/*
-	$post->setTitle($data['title'])
-	->setContent($data['content']);
-
+	$repositoty = $entityManager->getRepository(Post::class);
+	$categoryRepository = $entityManager->getRepository(Category::class);
+	
+	/** @var Post $post */
+	$post = $repositoty->find($id);
+	$post->getCategories()->clear();
 	$entityManager->flush();
 
+	foreach ($data['categories'] as $idCategory) {
+		$category = $categoryRepository->find($idCategory);
+		$post->addCategory($category);
+	}
+	
+	$entityManager->flush();
+	 
 	$uri = $generator->generate('posts.list');
-	*/
 
 	return new RedirectResponse('/posts');
 });
