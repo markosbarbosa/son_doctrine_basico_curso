@@ -22,6 +22,7 @@
 						<td><?php echo $post->getTitle(); ?></td>
 						<td><?php echo $post->getContent(); ?></td>
 						<td>
+							<?php echo "<a href='/posts/{$post->getId()}/categories'>Categorias</a>" ?> |
 							<?php echo "<a href='/posts/{$post->getId()}/edit'>Editar</a>" ?> | 
 							<?php echo "<a href='/posts/{$post->getId()}/remove'>Excluir</a>" ?>
 						</td>
